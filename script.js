@@ -1308,7 +1308,9 @@ function filterSearch(){
   var dataFilter = data.filter(x => x.nim == input.value);
   var resultName = document.getElementById("nama_mahasiswa");
   var resultDetail = document.getElementById("detail_mahasiswa");
-  if(input.value.length == 14){
+  if(dataFilter.length > 0){
+    document.getElementById("exception_container").style.display = 'none';
+    document.getElementById("data_container").style.display = 'block';
     for(var i = 0; i < dataFilter.length; i++){
       txt1 += dataFilter[0].nama_lengkap;
       resultName.innerText = txt1;
@@ -1322,6 +1324,10 @@ function filterSearch(){
               '<tr>' + '<td>Tanggal Lahir</td>' + '<td>:</td>' + '<td>' + dataFilter[0].tanggal_lahir + '</td>' + '</tr>';
       resultDetail.innerHTML = txt2;
     }
+  }
+  else{
+    document.getElementById("exception_container").style.display = 'block';
+    document.getElementById("data_container").style.display = 'none';
   }
 }
 
